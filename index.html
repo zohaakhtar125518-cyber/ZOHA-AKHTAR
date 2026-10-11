@@ -1,232 +1,275 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0a1328">
-  <meta name="description" content="The Smart Earner's — explore practical skills and free training. Join the Telegram community.">
-  <title>The Smart Earner's | Learn With Us</title>
-  <style>
-    :root {
-      --cyan: #25e5f5;
-      --blue: #3888ff;
-      --purple: #8058ff;
-      --ink: #050b18;
-      --muted: #91a7c8;
-    }
-    * { box-sizing: border-box; }
-    html, body { min-height: 100%; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      padding: 34px 16px;
-      display: grid;
-      place-items: center;
-      overflow-x: hidden;
-      color: #eef7ff;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(ellipse at 12% 12%, rgba(85, 59, 157, .26), transparent 38%),
-        radial-gradient(ellipse at 90% 22%, rgba(20, 180, 213, .15), transparent 35%),
-        linear-gradient(140deg, #172748 0%, #0b1830 52%, #101e38 100%);
-    }
-    .card {
-      position: relative;
-      isolation: isolate;
-      width: min(100%, 620px);
-      min-height: 870px;
-      padding: 58px 42px 42px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-      border: 1px solid rgba(66, 218, 245, .2);
-      border-radius: 48px;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(20, 167, 202, .13), transparent 40%),
-        linear-gradient(155deg, rgba(12, 31, 50, .98), rgba(4, 10, 23, .99) 72%);
-      box-shadow: 0 30px 90px rgba(0, 0, 0, .38), 0 0 36px rgba(37, 229, 245, .06);
-    }
-    .card::before, .card::after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      width: 220px;
-      height: 540px;
-      border: 2px solid rgba(109, 95, 255, .5);
-      transform: rotate(24deg);
-      pointer-events: none;
-    }
-    .card::before { top: -210px; left: -120px; }
-    .card::after {
-      right: -150px;
-      bottom: -260px;
-      border-color: rgba(37, 229, 245, .35);
-      transform: rotate(24deg);
-    }
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 22px;
-      border: 1px solid rgba(37, 229, 245, .4);
-      border-radius: 999px;
-      color: var(--cyan);
-      background: rgba(14, 91, 111, .18);
-      box-shadow: inset 0 0 18px rgba(37, 229, 245, .06);
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 2.2px;
-      text-transform: uppercase;
-    }
-    .brand-dot {
-      width: 9px;
-      height: 9px;
-      flex: 0 0 9px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 12px var(--cyan);
-    }
-    h1 {
-      margin: 42px 0 0;
-      font-size: clamp(48px, 10vw, 82px);
-      line-height: 1.04;
-      letter-spacing: -2.7px;
-      font-weight: 850;
-    }
-    h1 span { display: block; }
-    .gradient-text {
-      white-space: nowrap;
-      background: linear-gradient(95deg, #25e5f5 5%, #3b8dff 53%, #9860ff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .subtitle {
-      margin: 38px 0 0;
-      color: #c4dcf7;
-      font-size: clamp(17px, 3.7vw, 24px);
-      font-weight: 600;
-    }
-    .divider {
-      width: min(260px, 75%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 22px;
-      margin: 54px 0 58px;
-    }
-    .divider-line {
-      height: 1px;
-      flex: 1;
-      background: linear-gradient(90deg, transparent, rgba(37, 229, 245, .7));
-    }
-    .divider-line:last-child {
-      background: linear-gradient(90deg, rgba(128, 88, 255, .8), transparent);
-    }
-    .spark {
-      color: var(--cyan);
-      font-size: 27px;
-      text-shadow: 0 0 18px rgba(37, 229, 245, .9);
-    }
-    h2 {
-      margin: 0;
-      font-size: clamp(31px, 6.5vw, 47px);
-      line-height: 1.15;
-      font-weight: 850;
-      letter-spacing: -.8px;
-    }
-    .supporting {
-      margin: 28px 0 0;
-      color: var(--muted);
-      font-size: clamp(16px, 3.8vw, 22px);
-      line-height: 1.5;
-    }
-    .telegram-button {
-      width: 100%;
-      min-height: 88px;
-      margin-top: 42px;
-      padding: 20px 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 13px;
-      border: 0;
-      border-radius: 27px;
-      color: #061326;
-      background: linear-gradient(105deg, #25e5f5 0%, #3989ff 54%, #8b5bff 100%);
-      box-shadow: 0 12px 32px rgba(82, 83, 255, .35), 0 0 25px rgba(37, 229, 245, .14);
-      text-decoration: none;
-      font-size: clamp(18px, 4.3vw, 27px);
-      font-weight: 850;
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
-    }
-    .telegram-button:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.06);
-      box-shadow: 0 17px 38px rgba(82, 83, 255, .44), 0 0 30px rgba(37, 229, 245, .22);
-    }
-    .telegram-button:active { transform: scale(.985); }
-    .telegram-icon { width: 31px; height: 31px; flex: 0 0 31px; }
-    .footer {
-      margin-top: 36px;
-      color: #627795;
-      font-size: 17px;
-      letter-spacing: .2px;
-    }
-    @media (max-width: 480px) {
-      body { padding: 22px 12px; }
-      .card {
-        min-height: 0;
-        padding: 43px 24px 34px;
-        border-radius: 36px;
-      }
-      h1 { margin-top: 35px; letter-spacing: -1.8px; }
-      .subtitle { margin-top: 30px; }
-      .divider { margin: 43px 0 45px; }
-      .supporting { margin-top: 22px; }
-      .telegram-button { min-height: 72px; margin-top: 32px; border-radius: 22px; }
-      .footer { margin-top: 28px; font-size: 14px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition: none !important; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Smart Earner's</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 25px 14px;
+  display: grid;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  color: #eef7ff;
+  background:
+    radial-gradient(ellipse at top left, #28264e, transparent 50%),
+    linear-gradient(135deg, #14233f, #07101f, #10243b);
+}
+
+.card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  max-width: 620px;
+  padding: 55px 35px 40px;
+  text-align: center;
+  border: 1px solid #173a4b;
+  border-radius: 45px;
+  background: linear-gradient(150deg, #0b2030, #040a17 75%);
+  box-shadow: 0 20px 60px #0008;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 200px;
+  height: 600px;
+  border: 2px solid #6253b980;
+  transform: rotate(24deg);
+  pointer-events: none;
+}
+
+.card::before {
+  top: -200px;
+  left: -130px;
+}
+
+.card::after {
+  bottom: -280px;
+  right: -140px;
+  border-color: #25e5f555;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 22px;
+  border: 1px solid #25e5f566;
+  border-radius: 50px;
+  color: #32e4f4;
+  background: #0b536322;
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #25e5f5;
+  box-shadow: 0 0 15px #25e5f5;
+}
+
+h1 {
+  margin: 60px 0 0;
+  font-size: clamp(48px, 10vw, 82px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+h1 span {
+  display: block;
+}
+
+.gradient {
+  white-space: nowrap;
+  background: linear-gradient(90deg, #25e5f5, #3989ff, #955cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  margin-top: 45px;
+  color: #c6ddf6;
+  font-size: clamp(18px, 4vw, 25px);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin: 65px auto;
+  max-width: 270px;
+}
+
+.line {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, #25e5f5);
+}
+
+.line:last-child {
+  background: linear-gradient(90deg, #8058ff, transparent);
+}
+
+.star {
+  color: #25e5f5;
+  font-size: 30px;
+  text-shadow: 0 0 20px #25e5f5;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(30px, 6vw, 46px);
+  font-weight: 800;
+}
+
+.supporting {
+  margin-top: 30px;
+  color: #91a7c8;
+  font-size: clamp(16px, 4vw, 22px);
+  line-height: 1.5;
+}
+
+.telegram {
+  width: 100%;
+  min-height: 85px;
+  margin-top: 45px;
+  padding: 20px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border-radius: 27px;
+  background: linear-gradient(100deg, #25e5f5, #3989ff, #8b5bff);
+  box-shadow: 0 12px 35px #655aff55;
+  color: #061326;
+  font-size: clamp(19px, 4.5vw, 27px);
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.telegram:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+}
+
+.telegram:active {
+  transform: scale(0.98);
+}
+
+.telegram svg {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.footer {
+  margin-top: 38px;
+  color: #627795;
+  font-size: 15px;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 42px 22px 35px;
+    border-radius: 35px;
+  }
+
+  .brand {
+    padding: 12px 15px;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+  }
+
+  h1 {
+    margin-top: 42px;
+  }
+
+  .subtitle {
+    margin-top: 32px;
+  }
+
+  .divider {
+    margin: 48px auto;
+  }
+
+  .telegram {
+    min-height: 72px;
+    margin-top: 35px;
+    border-radius: 22px;
+  }
+
+  .footer {
+    font-size: 13px;
+  }
+}
+</style>
 </head>
+
 <body>
-  <main class="card">
-    <div class="brand"><span class="brand-dot" aria-hidden="true"></span> The Smart Earner's</div>
+<main class="card">
 
-    <h1>
-      <span>Zero</span>
-      <span class="gradient-text">Investment</span>
-      <span>Work</span>
-    </h1>
+  <div class="brand">
+    <span class="dot"></span>
+    THE SMART EARNER'S
+  </div>
 
-    <p class="subtitle">🔥 A Refined Skill Set</p>
+  <h1>
+    <span>Zero</span>
+    <span class="gradient">Investment</span>
+    <span>Work</span>
+  </h1>
 
-    <div class="divider" aria-hidden="true">
-      <span class="divider-line"></span>
-      <span class="spark">✦</span>
-      <span class="divider-line"></span>
-    </div>
+  <p class="subtitle">🔥 A Refined Skill Set</p>
 
-    <h2>WANNA LEARN?</h2>
-    <p class="supporting">Then click on the below link 👇</p>
+  <div class="divider">
+    <span class="line"></span>
+    <span class="star">✦</span>
+    <span class="line"></span>
+  </div>
 
-    <a class="telegram-button"
-       href="https://t.me/ZOHAAKHTAR"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Open The Smart Earner's Telegram community">
-      <svg class="telegram-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M21.7 4.35 18.6 19c-.23 1.03-.84 1.28-1.7.8l-4.7-3.46-2.27 2.19c-.25.25-.46.46-.94.46l.34-4.78 8.7-7.86c.38-.34-.08-.53-.59-.19L6.69 13.1 2.08 11.66c-1-.31-1.02-1 .21-1.49L20.32 3.2c.83-.3 1.56.2 1.38 1.15Z"/>
-      </svg>
-      <span>Telegram Now</span>
-    </a>
+  <h2>WANNA LEARN?</h2>
 
-    <div class="footer">The Smart Earner's · Official Community</div>
-  </main>
+  <p class="supporting">
+    Then click on the below link 👇
+  </p>
+
+  <a
+    class="telegram"
+    href="https://t.me/ZOHAAKHTAR?text=I%27m%20interested"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    <svg viewBox="0 0 24 24" fill="currentColor"
+         aria-hidden="true">
+      <path d="M21.7 4.35 18.6 19c-.23 1.03-.84 1.28-1.7.8l-4.7-3.46-2.27 2.19c-.25.25-.46.46-.94.46l.34-4.78 8.7-7.86c.38-.34-.08-.53-.59-.19L6.69 13.1 2.08 11.66c-1-.31-1.02-1 .21-1.49L20.32 3.2c.83-.3 1.56.2 1.38 1.15Z"/>
+    </svg>
+
+    <span>Telegram Now</span>
+  </a>
+
+  <div class="footer">
+    The Smart Earner's · Official Community
+  </div>
+
+</main>
 </body>
 </html>
